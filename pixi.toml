@@ -1,0 +1,84 @@
+[project]
+name = "insight-journal-template"
+description = "A template for open science article submissions to the Insight Journal using MyST Markdown"
+authors = [
+    "Galileo Galilei <galileo@pisa.university>",
+    "Giordano Bruno <giordano@rome.university>",
+    "Anthony Leeuwenhoek <anthony@netherlands.university>"
+]
+channels = ["conda-forge"]
+platforms = ["linux-64", "osx-64", "osx-arm64", "win-64"]
+
+[dependencies]
+# MyST ecosystem
+mystmd = "*"
+jupyter-book = "*"
+
+# Python scientific stack
+python = ">=3.9"
+numpy = "*"
+matplotlib = "*"
+scipy = "*"
+
+# Document processing
+pandoc = "*"
+tectonic = "*"
+
+# Development tools
+jupyterlab = "*"
+
+# Optional: for notebook execution
+ipykernel = "*"
+
+[pypi-dependencies]
+# Image processing (ITK ecosystem)
+itk = "*"
+simpleitk = "*"
+
+[tasks]
+# Build MyST documentation
+build-html = "myst build --html"
+build-pdf = "myst build --pdf"
+build-all = "myst build"
+
+# Start development server
+serve = "myst start"
+
+# Clean build artifacts
+clean = "myst clean"
+
+# Export formats
+export-pdf = "myst build --pdf --template arxiv_two_column"
+export-arxiv = "myst build --pdf --template arxiv_two_column --output exports/arxiv.pdf"
+export-docx = "myst build --docx"
+export-meca = "myst build --meca"
+
+# Development and testing
+dev = { depends-on = ["serve"] }
+lint = "myst check"
+
+# Build source code
+build-src = { cmd = "mkdir -p build && cd build && cmake ../src && make", cwd = "." }
+test-src = { cmd = "cd build && ctest", cwd = ".", depends-on = ["build-src"] }
+
+# Combined tasks
+build-paper = { depends-on = ["build-html", "export-pdf", "export-arxiv"] }
+build-complete = { depends-on = ["build-paper", "export-docx", "export-meca"] }
+
+[feature.cmake.dependencies]
+cmake = "*"
+make = "*"
+ninja = "*"
+
+[feature.cmake.tasks]
+configure-cmake = "cmake -B build -S src"
+build-cmake = "cmake --build build"
+test-cmake = "cd build && ctest"
+
+[environments]
+default = { features = [], solve-group = "default" }
+dev = { features = ["cmake"], solve-group = "default" }
+
+# Platform-specific dependencies
+[target.linux-64.dependencies]
+texlive-core = "*"

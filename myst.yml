@@ -1,0 +1,93 @@
+version: 1
+project:
+  # Project metadata
+  id: insight-journal-template
+  title: Insight Journal MyST Template
+  description: A template for open science article submissions to the Insight Journal using MyST Markdown
+  authors:
+    - name: Galileo Galilei
+      email: galileo@pisa.university
+      affiliation: Pisa University
+      orcid: 0000-0000-0000-0001
+    - name: Giordano Bruno
+      email: giordano@rome.university
+      affiliation: Rome University
+      orcid: 0000-0000-0000-0002
+    - name: Anthony Leeuwenhoek
+      email: anthony@netherlands.university
+      affiliation: Netherlands Pragmatic University
+      orcid: 0000-0000-0000-0003
+  
+  # License and access
+  license: CC-BY-4.0
+  open_access: true
+  
+  # Repository links
+  github: InsightSoftwareConsortium/InsightJournalTemplate
+  
+  # Keywords for indexing
+  keywords:
+    - open science
+    - reproducible research
+    - image processing
+    - ITK
+    - scientific computing
+    - MyST markdown
+  
+  # Publication venue
+  venue:
+    title: Insight Journal
+    url: https://insight-journal.org
+  
+  # Bibliography
+  bibliography:
+    - doc/references.bib
+  
+  # Export configurations
+  exports:
+    - format: pdf
+      template: arxiv_two_column
+      article_type: research-article
+      output: exports/manuscript.pdf
+    - format: pdf
+      template: plain_latex_book
+      output: exports/manuscript_book.pdf
+    - format: meca
+      output: exports/manuscript.meca.zip
+    - format: tex
+      template: arxiv_two_column
+      output: exports/manuscript.tex
+    - format: docx
+      output: exports/manuscript.docx
+  
+  # Additional resources
+  resources:
+    - src/
+    - data/
+  
+  # Requirements for reproducibility
+  requirements:
+    - requirements.txt
+    - pixi.toml
+
+# Website configuration
+site:
+  title: Insight Journal Template
+  logo: logo.png
+  favicon: favicon.ico
+  nav:
+    - title: Home
+      url: /
+    - title: Article
+      url: /doc/index.html
+    - title: Source Code
+      url: https://github.com/InsightSoftwareConsortium/InsightJournalTemplate
+  
+  # Site options
+  options:
+    logo_text: Insight Journal Template
+    hide_title_on_index: true
+  
+  # Social media and external links
+  domains:
+    - https://insight-journal-template.readthedocs.io

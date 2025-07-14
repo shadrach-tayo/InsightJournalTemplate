@@ -1,15 +1,44 @@
-Insight Journal Template
-========================
+Insight Journal MyST Template
+===============================
 
-[![Build LaTeX document](https://github.com/InsightSoftwareConsortium/InsightJournalTemplate/actions/workflows/build-test-latex.yml/badge.svg?branch=master)](https://github.com/InsightSoftwareConsortium/InsightJournalTemplate/actions/workflows/build-test-latex.yml)
+[![Build MyST Document](https://github.com/InsightSoftwareConsortium/InsightJournalTemplate/actions/workflows/build-myst.yml/badge.svg)](https://github.com/InsightSoftwareConsortium/InsightJournalTemplate/actions/workflows/build-myst.yml)
 
-This repository contains a template for submitting Technical Reports to the
-Insight Journal:
+This repository contains a modern template for submitting Technical Reports to the
+Insight Journal using MyST Markdown:
 
-    http://www.insight-journal.org
+    https://insight-journal.org
 
+## Overview
 
-Overleaf Link: https://www.overleaf.com/latex/templates/insight-journal/grjrhxkzzsvf
+This template has been transformed from LaTeX to **MyST Markdown**, providing:
+
+- 🚀 **Modern authoring** with MyST Markdown
+- 📦 **Dependency management** with Pixi
+- 🔄 **Reproducible builds** and environments
+- 📄 **Multiple export formats** (PDF, HTML, DOCX, MECA)
+- 🧪 **Integrated source code** testing and validation
+- 📚 **Rich scientific features** (equations, citations, cross-references)
+
+## Quick Start
+
+See the complete documentation in [`doc/README.md`](doc/README.md).
+
+### With Pixi (Recommended)
+
+1. Install [Pixi](https://pixi.sh/latest/)
+2. Clone and build:
+   ```bash
+   git clone https://github.com/InsightSoftwareConsortium/InsightJournalTemplate.git
+   cd InsightJournalTemplate
+   pixi install
+   pixi run build-complete
+   ```
+
+### Legacy LaTeX Template
+
+The original LaTeX template is still available in the `Document/` directory.
+
+**Overleaf Link**: https://www.overleaf.com/latex/templates/insight-journal/grjrhxkzzsvf
 
 
 License
