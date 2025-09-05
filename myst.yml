@@ -49,7 +49,7 @@ project:
 
   # Bibliography
   bibliography:
-    - doc/references.bib
+    - docs/references.bib
 
   # Export configurations
   exports:
@@ -83,8 +83,7 @@ project:
 # Website configuration
 site:
   title: Insight Journal Template
-  logo: logo.png
-  favicon: favicon.ico
+  favicon: docs/assets/favicon.ico
   nav:
     - title: Article
       url: /index.html
@@ -93,10 +92,7 @@ site:
 
   # Site options
   options:
+    logo: docs/assets/logo-insight-journal-square-light.png
+    logo_dark: docs/assets/logo-insight-journal-square-dark.png
     logo_text: Insight Journal Template
     hide_title_on_index: true
-
-  # Social media and external links
-  domains:
-    - https://insight-journal.org
-    - https://github.com/InsightSoftwareConsortium/InsightJournalTemplate

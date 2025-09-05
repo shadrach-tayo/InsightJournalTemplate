@@ -12,7 +12,7 @@ Insight Journal using MyST Markdown:
 This template demonstrates how to create reproducible, open science articles using:
 
 - **MyST Markdown** for rich scientific document authoring
-- **Pixi** for dependency management and build automation  
+- **Pixi** for dependency management and build automation
 - **Source code** organization in `src/`
 - **Data** organization in `data/`
 - **Multi-format exports** (PDF, HTML, DOCX, MECA, etc.)
@@ -30,8 +30,7 @@ This template demonstrates how to create reproducible, open science articles usi
 ├── data/                  # Data files and images
 │   └── img1.png          # Sample test image
 ├── myst.yml              # MyST configuration
-├── pixi.toml             # Pixi dependency management
-└── requirements.txt      # Python requirements
+└── pixi.toml             # Pixi dependency management
 ```
 
 ## Quick Start
@@ -106,7 +105,7 @@ This template demonstrates:
 The template is configured to export to:
 
 - **HTML**: Interactive web version
-- **PDF**: 
+- **PDF**:
   - arXiv two-column format
   - Plain LaTeX book format
 - **DOCX**: Microsoft Word format

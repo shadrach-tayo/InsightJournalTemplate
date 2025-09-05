@@ -11,11 +11,11 @@ platforms = ["linux-64", "osx-64", "osx-arm64", "win-64"]
 
 [dependencies]
 # MyST ecosystem
-mystmd = "*"
+mystmd = ">=1.6.0,<2"
 jupyter-book = "*"
 
 # Python scientific stack
-python = ">=3.9"
+python = ">=3.11"
 numpy = "*"
 matplotlib = "*"
 scipy = "*"

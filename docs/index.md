@@ -39,7 +39,6 @@ venue:
   url: https://insight-journal.org
 github: InsightSoftwareConsortium/InsightJournalTemplate
 doi: 10.5281/zenodo.1234567
-handle: 1338
 abstract: |
   This document describes a new algorithm implemented using the Insight Toolkit
   ITK (www.itk.org). The code of the algorithm is written following the
@@ -49,10 +48,6 @@ abstract: |
   output data that the authors used for validating the algorithm described in
   this paper. This adheres to the fundamental principle that scientific
   publications must facilitate reproducibility of the reported results.
-math:
-  "\\psi": "\\psi"
-  "\\mathbf": "\\mathbf"
-  "\\xi": "\\xi"
 exports:
   - format: pdf
     template: arxiv_two_column
