@@ -1,6 +1,15 @@
 ---
 title: The Importance of Open Access in Scientific Publications
 subtitle: A Template for MyST Markdown Articles in the Insight Journal
+abstract: |
+  This document describes a new algorithm implemented using the Insight Toolkit
+  ITK (www.itk.org). The code of the algorithm is written following the
+  ITK CodingStyle as described in the directory ITK/Documentation/Style.pdf.
+
+  This paper is accompanied with the source code, input data, parameters and
+  output data that the authors used for validating the algorithm described in
+  this paper. This adheres to the fundamental principle that scientific
+  publications must facilitate reproducibility of the reported results.
 authors:
   - name: Galileo Galilei
     email: galileo@pisa.university
@@ -24,40 +33,29 @@ affiliations:
   - id: Netherlands Pragmatic University
     name: Netherlands Pragmatic University
     address: Port Street, Netherlands
-date: 2024-07-14
+
+# License and access
+license:
+  code: Apache-2.0
+  content: CC-BY-4.0
+open_access: true
+
+# Repository links
+github: InsightSoftwareConsortium/InsightJournalTemplate
+
+# Keywords for indexing
 keywords:
   - open science
   - reproducible research
   - image processing
   - ITK
   - scientific computing
-license: CC-BY-4.0
-open_access: true
-subject: Computer Science
-venue:
-  title: Insight Journal
-  url: https://insight-journal.org
-github: InsightSoftwareConsortium/InsightJournalTemplate
-doi: 10.5281/zenodo.1234567
-abstract: |
-  This document describes a new algorithm implemented using the Insight Toolkit
-  ITK (www.itk.org). The code of the algorithm is written following the
-  ITK CodingStyle as described in the directory ITK/Documentation/Style.pdf.
+  - MyST markdown
 
-  This paper is accompanied with the source code, input data, parameters and
-  output data that the authors used for validating the algorithm described in
-  this paper. This adheres to the fundamental principle that scientific
-  publications must facilitate reproducibility of the reported results.
-exports:
-  - format: pdf
-    template: arxiv_two_column
-    article_type: research-article
-  - format: pdf
-    template: plain_latex_book
-  - format: meca
-  - format: tex
-bibliography:
-  - references.bib
+abbreviations:
+  FAIR: Findable, Accessible, Interoperable, and Reusable
+  ITK: Insight Toolkit
+  WASM: WebAssembly
 ---
 
 Using filters from the Insight Toolkit, we develop an algorithm for detecting

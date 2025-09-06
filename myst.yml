@@ -4,12 +4,12 @@ project:
   id: insight-journal-000
   title: Insight Journal MyST Template
   description: A template for open science article submissions to the Insight Journal using MyST Markdown
+
   authors:
     - name: Galileo Galilei
       email: galileo@pisa.university
       affiliation: Pisa University
       orcid: 0000-0000-0000-0001
-      corresponding: true
     - name: Giordano Bruno
       email: giordano@rome.university
       affiliation: Rome University
@@ -18,6 +18,16 @@ project:
       email: anthony@netherlands.university
       affiliation: Netherlands Pragmatic University
       orcid: 0000-0000-0000-0003
+  affiliations:
+    - id: Pisa University
+      name: Pisa University
+      address: Tower Drive, Pisa, Italy
+    - id: Rome University
+      name: Rome University
+      address: Inquisition Street, Rome, Italy
+    - id: Netherlands Pragmatic University
+      name: Netherlands Pragmatic University
+      address: Port Street, Netherlands
 
   # License and access
   license:
@@ -28,45 +38,28 @@ project:
   # Repository links
   github: InsightSoftwareConsortium/InsightJournalTemplate
 
-  # Keywords for indexing
-  keywords:
-    - open science
-    - reproducible research
-    - image processing
-    - ITK
-    - scientific computing
-    - MyST markdown
-
-  abbreviations:
-    FAIR: Findable, Accessible, Interoperable, and Reusable
-    ITK: Insight Toolkit
-    WASM: WebAssembly
-
   # Publication venue
   venue:
     title: Insight Journal
     url: https://insight-journal.org
 
-  # Bibliography
-  bibliography:
-    - docs/references.bib
-
   # Export configurations
   exports:
-    - format: pdf
-      template: arxiv_two_column
-      article_type: research-article
+    - format: typst
+      template: lapreprint-typst
       output: exports/manuscript.pdf
     - format: pdf
-      template: plain_latex_book
-      output: exports/manuscript_book.pdf
-    - format: meca
-      output: exports/manuscript.meca.zip
+      template: arxiv_nips
+      article_type: research-article
+      output: exports/arxiv.pdf
     - format: tex
-      template: arxiv_two_column
+      template: arxiv_nips
       output: exports/manuscript.tex
     - format: docx
       output: exports/manuscript.docx
+    - format: cff
+    - format: meca
+      output: exports/manuscript.meca.zip
 
   toc:
     - file: docs/index.md
@@ -75,6 +68,10 @@ project:
   resources:
     - src/
     - data/
+
+  # Bibliography
+  bibliography:
+    - docs/references.bib
 
   # Requirements for reproducibility
   requirements:
