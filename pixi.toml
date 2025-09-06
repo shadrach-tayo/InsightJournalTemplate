@@ -36,24 +36,22 @@ build-docx = "myst build --docx"
 build-cff = "myst build --cff"
 build-meca = "myst build --meca"
 
-# Start development server
-serve = "myst start"
-
-# Clean build artifacts
-clean = "myst clean"
-
-# Development and testing
-dev = { depends-on = ["serve"] }
-lint = "myst check"
+# Combined tasks
+build = { depends-on = ["build-html", "build-pdf", "build-tex", "build-docx", "build-cff", "build-meca"] }
+build-paper = { depends-on = ["build-html", "build-pdf", "build-arxiv"] }
+build-complete = { depends-on = ["build-paper", "build-tex", "build-docx", "build-cff", "build-meca"] }
 
 # Build source code
 build-src = { cmd = "mkdir -p build && cd build && cmake ../src && make", cwd = "." }
 test-src = { cmd = "cd build && ctest", cwd = ".", depends-on = ["build-src"] }
 
-# Combined tasks
-build = { depends-on = ["build-html", "build-pdf", "build-tex", "build-docx", "build-cff", "build-meca"] }
-build-paper = { depends-on = ["build-html", "build-pdf", "build-arxiv"] }
-build-complete = { depends-on = ["build-paper", "build-tex", "build-docx", "build-cff", "build-meca"] }
+# Start development server
+start = "myst start"
+# Alias
+dev = { depends-on = ["serve"] }
+
+# Clean build artifacts
+clean = "myst clean"
 
 [feature.cmake.dependencies]
 cmake = "*"
