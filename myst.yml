@@ -64,10 +64,10 @@ project:
   toc:
     - file: docs/index.md
 
-  # Additional resources
+  # Additional resources, e.g. data and code, for reproducibility
   resources:
-    - src/
-    - data/
+    - src/**
+    - data/**
 
   # Bibliography
   bibliography:
