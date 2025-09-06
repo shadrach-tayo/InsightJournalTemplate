@@ -20,16 +20,20 @@ jupyterlab = "*"
 
 # Optional: for notebook execution
 ipykernel = "*"
+
+# Build manuscript PDF
 typst = ">=0.13.1,<0.14"
 
 [pypi-dependencies]
-# Image processing (ITK ecosystem)
+# ITK ecosystem
 itk = "*"
 simpleitk = "*"
 
 [tasks]
 build-html = "myst build --html"
+# Does not require a LaTeX installation
 build-pdf = "myst build --typst"
+# Requires a LaTeX installation
 build-arxiv = "myst build --pdf"
 build-tex = "myst build --tex"
 build-docx = "myst build --docx"
@@ -37,9 +41,9 @@ build-cff = "myst build --cff"
 build-meca = "myst build --meca"
 
 # Combined tasks
-build = { depends-on = ["build-html", "build-pdf", "build-tex", "build-docx", "build-cff", "build-meca"] }
-build-paper = { depends-on = ["build-html", "build-pdf", "build-arxiv"] }
-build-complete = { depends-on = ["build-paper", "build-tex", "build-docx", "build-cff", "build-meca"] }
+build = { depends-on = ["build-html", "build-pdf", "build-cff"] }
+build-pdfs = { depends-on = ["build-pdf", "build-arxiv"] }
+build-complete = { depends-on = ["build-html", "build-pdfs", "build-tex", "build-docx", "build-cff", "build-meca"] }
 
 # Build source code
 build-src = { cmd = "mkdir -p build && cd build && cmake ../src && make", cwd = "." }
