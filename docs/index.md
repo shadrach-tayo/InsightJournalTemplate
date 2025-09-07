@@ -3,45 +3,12 @@ title: The Importance of Open Access in Scientific Publications
 subtitle: A Template for MyST Markdown Articles in the Insight Journal
 abstract: |
   This document describes a new algorithm implemented using the Insight Toolkit
-  ITK (www.itk.org). The code of the algorithm is written following the
-  ITK CodingStyle as described in the directory ITK/Documentation/Style.pdf.
+  ITK (itk.org)..
 
   This paper is accompanied with the source code, input data, parameters and
   output data that the authors used for validating the algorithm described in
   this paper. This adheres to the fundamental principle that scientific
   publications must facilitate reproducibility of the reported results.
-authors:
-  - name: Galileo Galilei
-    email: galileo@pisa.university
-    affiliation: Pisa University
-    orcid: 0000-0000-0000-0001
-  - name: Giordano Bruno
-    email: giordano@rome.university
-    affiliation: Rome University
-    orcid: 0000-0000-0000-0002
-  - name: Anthony Leeuwenhoek
-    email: anthony@netherlands.university
-    affiliation: Netherlands Pragmatic University
-    orcid: 0000-0000-0000-0003
-affiliations:
-  - id: Pisa University
-    name: Pisa University
-    address: Tower Drive, Pisa, Italy
-  - id: Rome University
-    name: Rome University
-    address: Inquisition Street, Rome, Italy
-  - id: Netherlands Pragmatic University
-    name: Netherlands Pragmatic University
-    address: Port Street, Netherlands
-
-# License and access
-license:
-  code: Apache-2.0
-  content: CC-BY-4.0
-open_access: true
-
-# Repository links
-github: InsightSoftwareConsortium/InsightJournalTemplate
 
 # Keywords for indexing
 keywords:
@@ -114,13 +81,13 @@ ImageType::Pointer image = ImageType::New();
 ```
 
 and to cite the online documentation of the Insight Toolkit, for example, the
-link to the doxygen documentation of the [ImageToImageFilter](http://www.itk.org/Doxygen/html/classitk_1_1ImageToImageFilter.html).
+link to the doxygen documentation of the [ImageToImageFilter](http://itk.org/Doxygen/html/classitk_1_1ImageToImageFilter.html).
 
 MyST markdown also supports inline code formatting for method names like `SetNumberOfIterations()`.
 
 ### Including Figures
 
-```{figure} ../data/RegistrationComponentsDiagram.eps
+```{figure} ./assets/RegistrationComponentsDiagram.eps
 :name: fig-registration-components
 :width: 80%
 
@@ -163,8 +130,6 @@ itk.imwrite(processed_image, 'output.png')
 ### Cross-References
 
 You can reference figures like {numref}`fig-registration-components` and equations like {eq}`eqn-shape-influence-term` throughout your document.
-
-## Bibliography
 
 ```{bibliography}
 ```
