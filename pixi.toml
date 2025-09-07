@@ -38,16 +38,11 @@ build-arxiv = "myst build --pdf"
 build-tex = "myst build --tex"
 build-docx = "myst build --docx"
 build-cff = "myst build --cff"
-build-meca = "myst build --meca"
 
 # Combined tasks
-build = { depends-on = ["build-html", "build-pdf", "build-cff"] }
+build-manuscript = { depends-on = ["build-html", "build-pdf", "build-cff"] }
 build-pdfs = { depends-on = ["build-pdf", "build-arxiv"] }
-build-complete = { depends-on = ["build-html", "build-pdfs", "build-tex", "build-docx", "build-cff", "build-meca"] }
-
-# Build source code
-build-src = { cmd = "mkdir -p build && cd build && cmake ../src && make", cwd = "." }
-test-src = { cmd = "cd build && ctest", cwd = ".", depends-on = ["build-src"] }
+build-meca = { cmd = "myst build --meca", depends-on = ["build-html", "build-pdfs", "build-tex", "build-docx", "build-cff"] }
 
 # Start development server
 start = "myst start"
@@ -57,16 +52,54 @@ dev = { depends-on = ["serve"] }
 # Clean build artifacts
 clean = "myst clean"
 
-[feature.cmake.dependencies]
+# Aggregate, standard build task
+build = { depends-on = ["build-manuscript", "test-project"] }
+
+[feature.cxx.dependencies]
 cmake = "*"
 make = "*"
 ninja = "*"
 
-[feature.cmake.tasks]
-configure-cmake = "cmake -B build -S src"
-build-cmake = "cmake --build build"
-test-cmake = "cd build && ctest"
+[feature.cxx.tasks.clone-itk]
+cmd = ["stat", "build/ITK", ">/dev/null", "||",
+  "git", "clone",
+    "https://github.com/InsightSoftwareConsortium/ITK",
+    "build/ITK"]
+outputs = ["build/ITK/LICENSE"]
+description = "Fetch ITK's source code"
+
+[feature.cxx.tasks.configure-itk]
+cmd = '''cmake -Bbuild/ITK-build -Sbuild/ITK -GNinja
+  -DBUILD_EXAMPLES:BOOL=OFF
+  -DBUILD_TESTING:BOOL=OFF'''
+depends-on = ["clone-itk"]
+outputs = ["build/ITK-build/CMakeFiles/**"]
+description = "Configure ITK"
+
+[feature.cxx.tasks.build-itk]
+cmd = "cmake --build build/ITK-build"
+depends-on = ["configure-itk"]
+outputs = ["build/ITK-build/**"]
+description = "Build ITK"
+
+[feature.cxx.tasks.configure-project]
+cmd = '''cmake -Bbuild/project-build -Ssrc -GNinja
+ -DITK_DIR=$(pwd)/build/ITK-build'''
+depends-on = ["build-itk"]
+outputs = ["build/project-build/CMakeFiles/**"]
+description = "Configure the project"
+
+[feature.cxx.tasks.build-project]
+cmd = "cmake --build build/project-build"
+depends-on = ["configure-project"]
+outputs = ["build/project-build/**"]
+description = "Build the project"
+
+[feature.cxx.tasks.test-project]
+cmd = "cd build/project-build && ctest"
+depends-on = ["build-project"]
+description = "Test the project"
 
 [environments]
 default = { features = [], solve-group = "default" }
-dev = { features = ["cmake"], solve-group = "default" }
+cxx = { features = ["cxx"], solve-group = "default" }

@@ -51,7 +51,7 @@ project:
     - format: pdf
       template: arxiv_nips
       article_type: research-article
-      output: exports/arxiv.pdf
+      output: exports/manuscript-arxiv-format.pdf
     - format: tex
       template: arxiv_nips
       output: exports/manuscript.tex
