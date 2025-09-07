@@ -28,10 +28,10 @@ target_link_libraries(ImageCopy PUBLIC ${ITK_LIBRARIES})
 # Add tests
 add_test(
   NAME CreateImage
-  COMMAND ImageCopy ${CMAKE_SOURCE_DIR}/img1.png
+  COMMAND ImageCopy ${CMAKE_CURRENT_SOURCE_DIR}/../data/img1.png
 )
 
 add_test(
   NAME CompareImage
-  COMMAND ImageCompare ${CMAKE_SOURCE_DIR}/img1.png ${CMAKE_SOURCE_DIR}/img1.png.base.png
+  COMMAND ImageCompare ${CMAKE_CURRENT_SOURCE_DIR}/../data/img1.png ${CMAKE_CURRENT_SOURCE_DIR}/../data/img1.png.base.png
 )
