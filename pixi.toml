@@ -43,6 +43,16 @@ build-manuscript = { depends-on = ["build-html", "build-pdf", "build-cff"] }
 build-pdfs = { depends-on = ["build-pdf", "build-arxiv"] }
 build-meca = { cmd = "myst build --meca", depends-on = ["build-html", "build-pdfs", "build-tex", "build-docx", "build-cff"] }
 
+# Verify MECA bundle reproducibility
+verify-meca = { cmd = '''
+  myst build --meca &&
+  rm -rf exports/manuscript.meca &&
+  unzip exports/manuscript.meca.zip -d exports/manuscript.meca &&
+  cd exports/manuscript.meca/bundle &&
+  pixi run build &&
+  pixi run test
+''', depends-on = ["build-meca"], description = "Build MECA export and verify bundle reproducibility" }
+
 # Start development server
 start = "myst start"
 # Alias

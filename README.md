@@ -94,6 +94,7 @@ The project uses [Pixi](https://pixi.sh) for dependency management and task auto
 | `build-manuscript` | Build HTML, PDF, and citation file |
 | `build-pdfs` | Build both Typst and arXiv PDFs |
 | `build-meca` | Create complete [MECA] archive for journal submission |
+| `verify-meca` | Build MECA and verify bundle reproducibility |
 | `build` | **Main build task** - builds manuscript and tests project |
 
 ### Development Tasks
@@ -154,6 +155,12 @@ pixi run -e cxx test-project
 ```bash
 # Generate complete MECA package
 pixi run build-meca
+```
+
+**Verify MECA bundle reproducibility:**
+```bash
+# Build MECA, unpack it, and verify the bundle builds correctly
+pixi run verify-meca
 ```
 
 ## License
