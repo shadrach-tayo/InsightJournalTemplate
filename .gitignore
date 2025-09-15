@@ -6,7 +6,7 @@
 *.dvi
 *.log
 *.out
-*.pdf
+# *.pdf
 *.ps
 *.toc
 _minted-*/
