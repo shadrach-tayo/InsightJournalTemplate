@@ -54,5 +54,5 @@ venv/
 env/
 .env
 
-exports/
+# exports/
 data/img1.png.base.png
