@@ -6,7 +6,7 @@
 *.dvi
 *.log
 *.out
-# *.pdf
+*.pdf
 *.ps
 *.toc
 _minted-*/
@@ -54,5 +54,5 @@ venv/
 env/
 .env
 
-# exports/
+exports/
 data/img1.png.base.png
